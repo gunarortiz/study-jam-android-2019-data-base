@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONSULTA DE PRECIOS"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SISTEMA TEXTO Y B.D."
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="base"
+        android:text="CUNSULTA EN LA BASE DE DATOS" />
+
+    <!--<Button-->
+    <!--android:id="@+id/button"-->
+    <!--android:onClick="ini"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="INICIALIZAR LA B.D" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/button2"-->
+    <!--android:onClick="migrar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="MIGRAR DE TEXTO A B.D." />-->
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ventas"
+        android:text="Venta Productos" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="resumen"
+        android:text="Resumen de ventas" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="resumenLinea"
+        android:text="Resumen de ventas por lineas" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="finalizar"
+        android:text="FINALIZAR" />
+
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:onClick="productos"
+        android:text="mostrar productos" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="precios"
+        android:text="mostrar precios" />
+
+
+    <Button
+        android:id="@+id/button2"
+        android:onClick="migrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MIGRAR DE TEXTO A B.D." />
+
+
+</LinearLayout>
