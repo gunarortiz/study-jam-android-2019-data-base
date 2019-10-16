@@ -44,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        migrarProductos();
         migrarPrecios();
+
+        migrarProductos();
+
     }
 
     public void migrarProductos() {
@@ -59,10 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             File dir = Environment.getExternalStorageDirectory();
-            File pts = new File(dir.getAbsolutePath()+ File.separator + "productos2.csv");
+            File pts = new File(dir.getAbsolutePath()+ File.separator + "productos.csv");
 
             BufferedReader lee = new BufferedReader(new FileReader(pts));
             String res = "", linea;
+            linea=lee.readLine();
             while ((linea=lee.readLine())!=null){
                 String nuevo = linea + ";";
                 String[] separado = nuevo.split(";");
@@ -73,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
                 String lin = separado[4];
                 String existencia = separado[5];
 
-                long c = pt.insertarProductos(codigo, producto, univen, uniem, lin, existencia);
+                double max = Double.parseDouble(pt.obtenerMax(codigo)) - 0.5d;
+
+                long c = pt.insertarProductos(codigo, producto, univen, uniem, lin, existencia, max+"");
             }
 
 
@@ -93,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             File dir = Environment.getExternalStorageDirectory();
-            File pts = new File(dir.getAbsolutePath()+ File.separator + "precios2.csv");
+            File pts = new File(dir.getAbsolutePath()+ File.separator + "precios.csv");
 
             BufferedReader lee = new BufferedReader(new FileReader(pts));
             String res = "", linea;

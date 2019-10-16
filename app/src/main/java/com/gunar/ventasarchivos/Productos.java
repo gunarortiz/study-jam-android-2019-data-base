@@ -29,7 +29,7 @@ public class Productos {
     private static final String NTBVEN= "ventas";
 
 
-    public static final int version = 8; // por cualquier cambio en la estructura se cambia la varsion
+    public static final int version = 9; // por cualquier cambio en la estructura se cambia la varsion
     private Creactua1 Control;
     private Context nContexto;
     private SQLiteDatabase pBD;
@@ -48,7 +48,8 @@ public class Productos {
                     UNV + " TEXT NOT NULL, " +
                     UNE + " TEXT NOT NULL, " +
                     LIN + " TEXT NOT NULL, " +
-                    EXIS + " INTEGER NOT NULL);"
+                    EXIS + " INTEGER NOT NULL, " +
+                    COS + " INTEGER NOT NULL); "
             );
             db.execSQL("CREATE TABLE " + NTBPRE + " (" +
                     COD + " INTEGER NOT NULL, " +
@@ -58,8 +59,7 @@ public class Productos {
             );
             db.execSQL("CREATE TABLE " + NTBVEN + " (" +
                     COD + " INTEGER NOT NULL, " +
-                    CAN + " INTEGER NOT NULL, " +
-                    COS + " INTEGER NOT NULL); "
+                    CAN + " INTEGER NOT NULL); "
             );
 
         }
@@ -88,7 +88,7 @@ public class Productos {
         Control.close();
     }
 
-    public long insertarProductos(String qCod, String qProd, String qUnv, String qUne, String qLin, String qExis) {
+    public long insertarProductos(String qCod, String qProd, String qUnv, String qUne, String qLin, String qExis, String qCos ) {
         ContentValues reg = new ContentValues();
         reg.put(COD,qCod);
         reg.put(PROD,qProd);
@@ -96,10 +96,11 @@ public class Productos {
         reg.put(UNE,qUne);
         reg.put(LIN,qLin);
         reg.put(EXIS,qExis);
+        reg.put(COS,qCos);
         return pBD.insert(NTBPRO, null, reg);
     }
     public String listarProductos() {
-        String[] columnas = new String[] {COD, PROD, UNV, UNE, LIN, EXIS};
+        String[] columnas = new String[] {COD, PROD, UNV, UNE, LIN, EXIS, COS};
         Cursor c = pBD.query(NTBPRO, columnas, null, null, null, null, null);
         String res = "";
         int iCod = c.getColumnIndex(COD);
@@ -108,10 +109,11 @@ public class Productos {
         int iUne = c.getColumnIndex(UNE);
         int iLin = c.getColumnIndex(LIN);
         int iExis = c.getColumnIndex(EXIS);
+        int iCos = c.getColumnIndex(COS);
 
 
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            res = res + c.getString(iCod) + " " + c.getString(iProd) + " " + c.getString(iUnv)+ " " + c.getString(iUne) + " " + c.getString(iLin) + " " + c.getString(iExis) + "\n";
+            res = res + c.getString(iCod) + " " + c.getString(iProd) + " " + c.getString(iUnv)+ " " + c.getString(iUne) + " " + c.getString(iLin) + " " + c.getString(iExis) + " " + c.getString(iCos)  + "\n";
         }
 
         return res;
@@ -204,7 +206,7 @@ public class Productos {
             c.moveToFirst();
 
         String res = "";
-        res = res + c.getString(1);
+        res = c.getString(1);
         return res;
     }
 
